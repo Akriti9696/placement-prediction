@@ -1,0 +1,205 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Body */
+body{
+
+    margin:0;
+    padding:20px;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:linear-gradient(135deg,#667eea,#764ba2);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    box-sizing:border-box;
+
+}
+
+/* Main Container */
+.container{
+
+    width:450px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+/* Heading */
+h1{
+
+    text-align:center;
+
+    color:#333;
+
+    margin-bottom:30px;
+
+}
+
+/* Labels */
+label{
+
+    font-weight:bold;
+
+    display:block;
+
+    margin-bottom:8px;
+
+}
+
+/* Input Boxes */
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    box-sizing:border-box;
+
+}
+
+/* Dropdown */
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    box-sizing:border-box;
+
+}
+
+/* Input Focus */
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border:2px solid #667eea;
+
+}
+
+/* Button */
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#667eea;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+/* Button Hover */
+button:hover{
+
+    background:#4b5fd6;
+
+    transform:scale(1.03);
+
+}
+
+/* Result Box */
+.result{
+
+    margin-top:25px;
+
+    padding:18px;
+
+    background:#eef2ff;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+/* Result Text */
+.result p{
+
+    margin-top:10px;
+
+    color:#444;
+
+    font-size:18px;
+
+}
+
+/* Progress Bar Container */
+.progress{
+
+    width:100%;
+
+    background:#ddd;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    margin-top:15px;
+
+}
+
+/* Progress Bar */
+.progress-bar{
+
+    background:#4CAF50;
+
+    color:white;
+
+    text-align:center;
+
+    padding:10px;
+
+    font-weight:bold;
+
+    transition:width .5s ease;
+
+}
