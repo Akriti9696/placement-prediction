@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.vscode/
+.env
+venv/
+.venv/
+data/prediction_history.csv

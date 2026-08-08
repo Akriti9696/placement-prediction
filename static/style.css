@@ -15,11 +15,7 @@ body{
 
     background:linear-gradient(135deg,#667eea,#764ba2);
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    
 
     min-height:100vh;
 
@@ -31,6 +27,8 @@ body{
 .container{
 
     width:450px;
+
+    margin:40px auto;
 
     background:white;
 
@@ -125,9 +123,11 @@ button{
 
     border:none;
 
-    border-radius:10px;
+    border-radius:12px;
 
     font-size:18px;
+
+    font-weight:bold;
 
     cursor:pointer;
 
@@ -202,4 +202,179 @@ button:hover{
 
     transition:width .5s ease;
 
+}
+
+table{
+   width:90%;
+   margin:40px;
+   border-collapse:collapse;
+
+}
+
+th{
+    background:#667eea;
+    color:white;
+    padding:12px;
+   
+}
+
+td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:centre;
+   
+
+ tr:nth-child(even){
+    background:#f4f4f4;
+ }
+
+ th,
+td{
+    padding:12px;
+    border:1px solid #ddd;
+    text-align:center;
+    white-space:nowrap;
+}
+
+th{
+    background:#667eea;
+    color:white;
+}
+ .history{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+    overflow-x:auto;
+
+}
+
+.navbar{
+    width:100%;
+    background:#4f46e5;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+footer{
+    margin-top:40px;
+    text-align:center;
+    color:white;
+    font-size:15px;
+    padding:20px;
+}
+.dashboard{
+    width:90%;
+    max-width:1200px;
+
+    margin:50px auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.card{
+
+    flex:1;
+
+    min-width:220px;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card h3{
+
+    color:#666;
+
+}
+
+.card h1{
+
+    color:#4f46e5;
+
+    margin-top:10px;
+
+    font-size:40px;
+
+}
+
+#searchInput{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:20px;
+
+    border-radius:10px;
+
+    border:1px solid #ddd;
+
+    font-size:16px;
+
+}
+
+}
+
+/* Pie chart */
+
+.chart-container canvas {
+    width:140px;
+    height:140px;
+    margin:0 auto;
+   
+   
+   
+}
+
+.statistics {
+    width:90%;
+    max-width: 600px;
+    margin:30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align:center;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15)
+}
+
+.statistics h2{
+    margin-bottom:15px;
 }

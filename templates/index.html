@@ -1,81 +1,454 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Placement Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Prediction System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Chart section */
+        .statistics {
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .statistics h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .chart-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+
 </head>
 
 <body>
-<div class="container">
 
-<h1>Placement Prediction System</h1>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>🎓 Placement Prediction System</h2>
+    </nav>
 
-<form action="/predict" method="POST">
 
-    <label>CGPA</label><br>
-    <input type="number" 
-    step="0.1" 
-    name="cgpa" 
-    min="0"
-    max="10"
-    placeholder="Enter CGPA(0-10)"
-    required><br><br>
+    <!-- Prediction Form -->
+    <div class="container">
 
-    <label>Programming Score</label><br>
-    <input type="number" 
-    name="programming"
-    placeholder="Enter programming Score(0-100)"
-    required><br><br>
+        <h1>Placement Prediction</h1>
 
-    <label>Aptitude Score</label><br>
-    <input type="number"
-     name="aptitude" 
-     placeholder="Enter Aptitude Score (0-100)"
-     required><br><br>
+        <form action="/predict" method="POST">
 
-    <label>Communication Score</label><br>
-    <input type="number" 
-    name="communication" 
-    placeholder="Enter Communication Score(0-100)"
-    required><br><br>
+            <!-- CGPA -->
+            <label>CGPA</label>
 
-    <label>Projects</label><br>
-    <input type="number" 
-    name="projects" 
-    placeholder="Enter Number of projects(0-10)"
-    required><br><br>
+            <input
+                type="number"
+                name="cgpa"
+                step="0.1"
+                min="0"
+                max="10"
+                placeholder="Enter CGPA (0-10)"
+                required>
 
-    <label>Internship</label>
 
-<select name="internship">
+            <!-- Programming -->
+            <label>Programming Score</label>
 
-    <option value="1">Yes</option>
+            <input
+                type="number"
+                name="programming"
+                min="0"
+                max="100"
+                placeholder="Enter Programming Score (0-100)"
+                required>
 
-    <option value="0">No</option>
 
-</select>
+            <!-- Aptitude -->
+            <label>Aptitude Score</label>
 
-    <button type="submit">Predict</button>
+            <input
+                type="number"
+                name="aptitude"
+                min="0"
+                max="100"
+                placeholder="Enter Aptitude Score (0-100)"
+                required>
 
-</form>
 
-{% if prediction %}
+            <!-- Communication -->
+            <label>Communication Score</label>
 
-<div class="result">
-    <h3>{{ prediction}}</h3>
+            <input
+                type="number"
+                name="communication"
+                min="0"
+                max="100"
+                placeholder="Enter Communication Score (0-100)"
+                required>
 
-    <p>
-        Confidence:<strong>{{confidence}}%</strong>
-    </p>
-    <div class ="progress-bar"
-       style="width: {{ confidence }}%;">
-         {{confidence}}%
+
+            <!-- Projects -->
+            <label>Projects</label>
+
+            <input
+                type="number"
+                name="projects"
+                min="0"
+                max="10"
+                placeholder="Enter Number of Projects"
+                required>
+
+
+            <!-- Internship -->
+            <label>Internship</label>
+
+            <select name="internship">
+
+                <option value="1">Yes</option>
+
+                <option value="0">No</option>
+
+            </select>
+
+
+            <!-- Predict Button -->
+            <button type="submit">
+                Predict
+            </button>
+
+        </form>
+
+
+        <!-- Prediction Result -->
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>
+                {{ prediction }}
+            </h2>
+
+            <h3>
+                Confidence:
+                <strong>{{ confidence }}%</strong>
+            </h3>
+
+
+            <!-- Progress Bar -->
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    style="width: {{ confidence }}%;">
+
+                    {{ confidence }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
     </div>
-</div>
-{% endif %}
-</div>
 
 
+    <!-- Dashboard Cards -->
+    <div class="dashboard">
+
+        <div class="card">
+
+            <h3>Total Predictions</h3>
+
+            <h1>
+                {{ total_predictions }}
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Placed</h3>
+
+            <h1>
+                {{ placed_students }}
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Not Placed</h3>
+
+            <h1>
+                {{ not_placed }}
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <!-- Placement Statistics -->
+    <div class="statistics">
+
+        <h2>
+            Placement Statistics
+        </h2>
+
+        <div class="chart-container">
+
+            <canvas id="placementChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- Prediction History -->
+    <div class="history">
+
+        <h2>
+            Prediction History
+        </h2>
+
+
+        <!-- Search -->
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search Prediction History..."
+            onkeyup="searchTable()">
+
+
+        <!-- History Table -->
+        <table id="historyTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>CGPA</th>
+
+                    <th>Programming</th>
+
+                    <th>Aptitude</th>
+
+                    <th>Communication</th>
+
+                    <th>Projects</th>
+
+                    <th>Internship</th>
+
+                    <th>Prediction</th>
+
+                    <th>Confidence</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% if history %}
+
+                    {% for row in history %}
+
+                    <tr>
+
+                        <td>
+                            {{ row.CGPA }}
+                        </td>
+
+                        <td>
+                            {{ row.Programming }}
+                        </td>
+
+                        <td>
+                            {{ row.Aptitude }}
+                        </td>
+
+                        <td>
+                            {{ row.Communication }}
+                        </td>
+
+                        <td>
+                            {{ row.Projects }}
+                        </td>
+
+                        <td>
+
+                            {% if row.Internship == 1 or row.Internship == "1" %}
+
+                                Yes
+
+                            {% else %}
+
+                                No
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ row.Prediction }}
+                        </td>
+
+                        <td>
+                            {{ row.Confidence }}%
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="8">
+
+                            No prediction history available.
+
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            Placement Prediction System | Built with Python, Flask & Machine Learning
+        </p>
+
+    </footer>
+
+
+    <!-- Pie Chart JavaScript -->
+    <script>
+
+        const chartCanvas =
+            document.getElementById("placementChart");
+
+
+        new Chart(chartCanvas, {
+
+            type: "pie",
+
+            data: {
+
+                labels: [
+                    "Placed",
+                    "Not Placed"
+                ],
+
+                datasets: [{
+
+                    data: [
+
+                        {{ placed_students }},
+
+                        {{ not_placed }}
+
+                    ]
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+
+                        position: "bottom"
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+
+    <!-- Search Table JavaScript -->
+    <script>
+
+        function searchTable() {
+
+            let input =
+                document.getElementById("searchInput");
+
+            let filter =
+                input.value.toLowerCase();
+
+            let table =
+                document.getElementById("historyTable");
+
+            let rows =
+                table.getElementsByTagName("tr");
+
+
+            for (let i = 1; i < rows.length; i++) {
+
+                let rowText =
+                    rows[i].textContent.toLowerCase();
+
+                if (rowText.includes(filter)) {
+
+                    rows[i].style.display = "";
+
+                } else {
+
+                    rows[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+    </script>
 
 </body>
+
 </html>
