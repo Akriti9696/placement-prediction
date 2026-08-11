@@ -1,86 +1,112 @@
 # 🎓 Placement Prediction System
 
-A Machine Learning web application that predicts whether a student is likely to be placed based on their academic and skill-related information.
+A Machine Learning based web application that predicts whether a student is likely to be placed based on academic performance, technical skills, communication skills, projects, and internship experience.
 
+The application is built using **Python, Machine Learning, Pandas, Scikit-learn, Plotly, and Streamlit**.
 
 ## 🚀 Live Demo
 
-👉 [Open Placement Prediction App](https://placement-prediction-by-akritipandey.streamlit.app/)
+👉 https://placement-prediction-by-akritipandey.streamlit.app/
 
-## 📌 Features
+## 📂 GitHub Repository
 
-- Student placement prediction
-- CGPA-based prediction
-- Programming score analysis
-- Aptitude score analysis
-- Communication score analysis
-- Project count
-- Internship status
-- Prediction confidence percentage
-- Placement statistics
-- Interactive pie chart
-- Prediction history
-- Searchable prediction history
-- Responsive and user-friendly interface
+👉 https://github.com/Akriti9696/placement-prediction
 
-## 🛠️ Technologies Used
+---
 
-- Python
-- Streamlit
-- Pandas
-- Scikit-learn
-- Plotly
-- Pickle
-- Git & GitHub
+## 📌 Project Overview
 
-## 🤖 Machine Learning
+The Placement Prediction System uses a trained **Logistic Regression** classification model to predict student placement outcomes.
 
-The application uses a trained Machine Learning classification model to predict the placement status of students.
-
-### Input Features
+The user provides:
 
 - CGPA
 - Programming Score
 - Aptitude Score
 - Communication Score
 - Number of Projects
-- Internship Status
+- Internship Experience
 
-### Output
+The trained model then predicts whether the student is likely to be:
 
-The model predicts:
+✅ **Placed**
 
-- ✅ Student is likely to be PLACED
-- ❌ Student is likely to be NOT PLACED
+or
 
-The application also displays the model's prediction confidence.
+❌ **Not Placed**
 
-## 📊 Dashboard
+The application also calculates the model's prediction confidence.
 
-The application provides:
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Logistic Regression
+- Plotly
+- Streamlit
+- Pickle
+- Git & GitHub
+
+---
+
+## 📊 Application Features
+
+### 🎓 Student Prediction
+
+Users can enter student information and receive an immediate placement prediction.
+
+### 📈 Prediction Confidence
+
+The application displays the confidence percentage associated with the prediction.
+
+### 📊 Placement Dashboard
+
+The dashboard displays:
 
 - Total Predictions
 - Placed Students
 - Not Placed Students
 - Placement Distribution
-- Prediction History
 
-## 📂 Project Structure
+### 🥧 Interactive Pie Chart
+
+A Plotly-based pie chart visualizes the distribution of placed and not-placed predictions.
+
+### 📋 Prediction History
+
+The application stores previous predictions and displays them in a searchable table.
+
+### 🎨 Custom UI
+
+The application includes a custom gradient theme, styled cards, buttons, metrics, and responsive layout.
+
+---
+
+## 🧠 Machine Learning Workflow
+
+The project follows these steps:
 
 ```text
-Placement Prediction/
-│
-├── models/
-│   └── placement_model.pkl
-│
-├── static/
-│   └── style.css
-│
-├── templates/
-│   └── index.html
-│
-├── streamlit_app.py
-├── app.py
-├── requirements.txt
-├── README.md
-└── .gitignore
+Dataset
+   ↓
+Data Exploration
+   ↓
+Data Visualization
+   ↓
+Feature Selection
+   ↓
+Train-Test Split
+   ↓
+Logistic Regression
+   ↓
+Model Training
+   ↓
+Model Evaluation
+   ↓
+Model Serialization
+   ↓
+Streamlit Deployment

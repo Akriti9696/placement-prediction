@@ -94,11 +94,24 @@ print(predictions)
 print("Predictions:")
 print(predictions)
 
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score
+)
 
-accuracy = accuracy_score(y_test,predictions)
-print("\nModel Accuracy:", accuracy)
+accuracy = accuracy_score(y_test, predictions)
+precision = precision_score(y_test, predictions)
+recall = recall_score(y_test, predictions)
+f1 = f1_score(y_test, predictions)
 
+print("\n===== MODEL PERFORMANCE =====")
+
+print("Accuracy :", round(accuracy * 100, 2), "%")
+print("Precision:", round(precision * 100, 2), "%")
+print("Recall   :", round(recall * 100, 2), "%")
+print("F1 Score :", round(f1 * 100, 2), "%")
 
 
 import pickle 
