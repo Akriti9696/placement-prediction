@@ -4,6 +4,14 @@ import pickle
 import os
 import plotly.express as px
 
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score
+)
+
 # --------------------------------------------------
 # PAGE CONFIGURATION
 # --------------------------------------------------
@@ -13,6 +21,55 @@ st.set_page_config(
     page_icon="🎓",
     layout="wide"
 )
+
+# --------------------------------------------------
+# ABOUT PROJECT
+# --------------------------------------------------
+
+with st.expander("📘 About This Project"):
+
+    st.markdown("""
+    ## 🎓 Placement Prediction System
+
+    This Machine Learning application predicts whether a student
+    is likely to be placed based on academic performance,
+    technical skills, communication ability, projects, and
+    internship experience.
+
+    ### 🔍 Input Features
+
+    - **CGPA** – Academic performance
+    - **Programming Score** – Programming/technical ability
+    - **Aptitude Score** – Aptitude test performance
+    - **Communication Score** – Communication skills
+    - **Projects** – Number of completed projects
+    - **Internship** – Previous internship experience
+
+    ### 🤖 Prediction
+
+    The trained Machine Learning classification model analyzes
+    these features and predicts:
+
+    ✅ **Likely to be PLACED**
+
+    or
+
+    ❌ **Likely to be NOT PLACED**
+
+    The application also displays the model's prediction
+    confidence.
+
+    ### 📊 Dashboard
+
+    The application provides:
+
+    - Total predictions
+    - Placed students
+    - Not placed students
+    - Placement distribution
+    - Prediction history
+    - Searchable prediction records
+    """)
 
 
 # --------------------------------------------------
@@ -506,6 +563,10 @@ if total_predictions > 0:
         fig,
         use_container_width=False
     )
+
+    # --------------------------------------------------
+
+
 # --------------------------------------------------
 # PREDICTION HISTORY
 # --------------------------------------------------
@@ -542,6 +603,64 @@ else:
     st.info(
         "No prediction history available yet."
     )
+
+# --------------------------------------------------
+# GITHUB PROJECT BUTTON
+# --------------------------------------------------
+
+st.markdown("---")
+
+st.markdown(
+    "<h3 style='text-align: center;'>Developed by Akriti Pandey</h3>",
+    unsafe_allow_html=True
+)
+
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.link_button(
+        "⭐ View Project on GitHub",
+        "https://github.com/Akriti9696/placement-prediction",
+        use_container_width=True
+    )
+
+
+# --------------------------------------------------
+# GITHUB PROJECT
+# --------------------------------------------------
+
+st.markdown("---")
+
+st.markdown(
+    """
+    <div style="text-align:center;">
+        <h3>Developed by Akriti Pandey</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div style="text-align:center; margin:20px 0;">
+        <a href="https://github.com/Akriti9696/placement-prediction"
+           target="_blank"
+           style="
+               display:inline-block;
+               background-color:#4f46e5;
+               color:white;
+               padding:12px 28px;
+               border-radius:10px;
+               text-decoration:none;
+               font-weight:bold;
+               font-size:16px;
+           ">
+           ⭐ View Project on GitHub
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # --------------------------------------------------
