@@ -625,45 +625,7 @@ with col2:
     )
 
 
-# --------------------------------------------------
-# GITHUB PROJECT
-# --------------------------------------------------
-
-st.markdown("---")
-
-st.markdown(
-    """
-    <div style="text-align:center;">
-        <h3>Developed by Akriti Pandey</h3>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <div style="text-align:center; margin:20px 0;">
-        <a href="https://github.com/Akriti9696/placement-prediction"
-           target="_blank"
-           style="
-               display:inline-block;
-               background-color:#4f46e5;
-               color:white;
-               padding:12px 28px;
-               border-radius:10px;
-               text-decoration:none;
-               font-weight:bold;
-               font-size:16px;
-           ">
-           ⭐ View Project on GitHub
-        </a>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-
-# --------------------------------------------------
+#--------------------------------------------------
 # FOOTER
 # --------------------------------------------------
 
